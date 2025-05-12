@@ -12,7 +12,17 @@ export default defineConfig({
   renderer: {
     resolve: {
       alias: {
-        '@renderer': resolve('src/renderer/src')
+        '@': resolve('src/renderer/src')
+      }
+    },
+    css: {
+      preprocessorOptions: {
+        less: {
+          javascriptEnabled: true,
+          additionalData: `
+            @import "@/assets/style/index.less";
+          `
+        }
       }
     },
     plugins: [vue()]

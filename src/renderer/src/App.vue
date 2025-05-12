@@ -5,7 +5,7 @@ const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
 </script>
 
 <template>
-  <img alt="logo" class="logo" src="./assets/electron.svg" />
+  <!-- <img alt="logo" class="logo" src="./assets/electron.svg" />
   <div class="creator">Powered by electron-vite</div>
   <div class="text">
     Build an Electron app with
@@ -22,5 +22,6 @@ const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
       <a target="_blank" rel="noreferrer" @click="ipcHandle">Send IPC</a>
     </div>
   </div>
-  <Versions />
+  <Versions /> -->
+  <RouterView></RouterView>
 </template>
