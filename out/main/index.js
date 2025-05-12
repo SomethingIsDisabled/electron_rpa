@@ -3,6 +3,7 @@ const electron = require("electron");
 const path = require("path");
 const utils = require("@electron-toolkit/utils");
 const icon = path.join(__dirname, "../../resources/icon.png");
+console.log(path.join(electron.app.getAppPath(), "out", "/preload/index.js"));
 function createWindow() {
   const mainWindow = new electron.BrowserWindow({
     width: 1200,
@@ -12,6 +13,7 @@ function createWindow() {
     ...process.platform === "linux" ? { icon } : {},
     webPreferences: {
       preload: path.join(__dirname, "../preload/index.js"),
+      // preload: join(app.getAppPath(), 'out', '/preload/index.js'),
       sandbox: false
     }
   });
