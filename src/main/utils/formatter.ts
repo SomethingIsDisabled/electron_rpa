@@ -20,9 +20,6 @@ const cellDataFormat = (str, partition) => {
   return [];
 }
 
-
-
-
 module.exports = {
   cellDataFormat,
 }

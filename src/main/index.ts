@@ -2,8 +2,12 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+// import { mainFunc } from './main'
+import { testFunc } from './test'
+import clientConfig from '../../resources/config.json'
 
-console.log(join(app.getAppPath(), 'out', '/preload/index.js'))
+const defaultPort = clientConfig.port || '50213'
+let curPort = defaultPort
 
 function createWindow(): void {
   // Create the browser window.
@@ -54,7 +58,14 @@ app.whenReady().then(() => {
   })
 
   // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
+  // ipcMain.on('run-playwright', () => mainFunc(curPort))
+  ipcMain.on('run-playwright', (event, data) => testFunc(data))
+  ipcMain.on('set-port', (event, data) => {
+    if (data && Number(data)) {
+      curPort = data
+      console.log(`set-port`, curPort)
+    }
+  })
 
   createWindow()
 

@@ -2,14 +2,8 @@
 const electron = require("electron");
 const preload = require("@electron-toolkit/preload");
 const api = {
-  HelloWorld: (value) => {
-    preload.electronAPI.ipcRenderer.send("message-to-server", {
-      module: "user",
-      action: "read",
-      data: {
-        helloWorld: value
-      }
-    });
+  run: (options) => {
+    preload.electronAPI.ipcRenderer.send("run-playwright", options);
   }
 };
 if (process.contextIsolated) {
