@@ -59,7 +59,7 @@ app.whenReady().then(() => {
 
   // IPC test
   // ipcMain.on('run-playwright', () => mainFunc(curPort))
-  ipcMain.on('run-playwright', (event, data) => testFunc(data))
+  ipcMain.on('run-playwright', (event, data) => testFunc({ ...{ port: curPort }, ...data }))
   ipcMain.on('set-port', (event, data) => {
     if (data && Number(data)) {
       curPort = data

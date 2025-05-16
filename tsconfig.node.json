@@ -3,6 +3,8 @@
   "include": ["electron.vite.config.*", "src/main/**/*", "src/preload/**/*"],
   "compilerOptions": {
     "composite": true,
+    "target": "ESNext",
+    "module": "CommonJS",
     "types": ["electron-vite/node"]
   }
 }

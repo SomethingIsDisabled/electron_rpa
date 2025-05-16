@@ -57,7 +57,7 @@ const func2 = async (): Promise<void> => {
 const logs = ref<string[]>([])
 
 onMounted(() => {
-  window.electron.ipcRenderer.on('playwright-log', (event, log) => {
+  window.electron.ipcRenderer.on('log', (event, log) => {
     logs.value.push(log)
     // 这里可以根据需要将日志显示在UI中
     console.log('Received log:', log)
